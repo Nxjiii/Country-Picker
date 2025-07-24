@@ -19,7 +19,7 @@ Python GUI app built with PySide6. It fetches a list of countries from an API an
 
 ## Run the App
 
-Run the app with the following command:
+Run the app with the following command (subsitute France with any country for pre-selection):
 
 ```bash
 python -m country_picker --select France
