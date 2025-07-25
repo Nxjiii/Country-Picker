@@ -71,15 +71,16 @@ class CountryPickerWindow(QMainWindow):
         self.combobox.setEnabled(True)
         self.label.setText("Select a country")
 
-        if self.preselect_country in countries:
-            index = self.combobox.findText(self.preselect_country)
-            if index != -1:
-                self.combobox.setCurrentIndex(index)
-        else:
-            # display a message box for invalid pre-selection
-            QMessageBox.warning(self, "Warning", f"'{self.preselect_country}' is not a valid country.")
-            # Log to console
-            print(f"Pre-selected country '{self.preselect_country}' not found in the fetched list.")
+        if self.preselect_country:  # only check if preselect_country is not empty
+            if self.preselect_country in countries:
+                index = self.combobox.findText(self.preselect_country)
+                if index != -1:
+                    self.combobox.setCurrentIndex(index)
+            else:
+                # display a message box for invalid pre-selection
+                QMessageBox.warning(self, "Warning", f"'{self.preselect_country}' is not a valid country.")
+                # log to console
+                print(f"Pre-selected country '{self.preselect_country}' not found in the fetched list.")
 
     def handle_fetch_error(self, error_message: str) -> None:
         """Handle errors during country data fetching."""
